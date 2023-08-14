@@ -9,4 +9,4 @@ def load_data():
     with open("../data/operations.json", "r", encoding="utf-8") as f:
         return json.load(f)
 
-# print(load_data()[-5])
+print(type(load_data()))
