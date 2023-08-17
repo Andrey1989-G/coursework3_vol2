@@ -1,16 +1,12 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from utils.utils_for_file import load_data
+from utils.utils_for_data import slice_data, magic_with_date, magic_with_N_card, magic_with_N_account
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def output_banking_operation(data: list):
+    for i in data:
+        print(f'{magic_with_date(i["date"])} {i["description"]}\n'
+              f'{magic_with_N_card(i["from"]) if i.get("from")!=None else ""} -> '
+              f'{magic_with_N_account(i["to"])}\n{i["operationAmount"]["amount"]} '
+              f'{i["operationAmount"]["currency"]["name"]}\n')
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+output_banking_operation(slice_data(load_data("data/operations.json")))
