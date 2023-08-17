@@ -1,12 +1,12 @@
 import json
 
 
-def load_data():
+def load_data(path: str = 'data/operations.json'):
     """
     получает файл джейсон
     :return: возвращает список со словарями
     """
-    with open("../data/operations.json", "r", encoding="utf-8") as f:
+    with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
-print(type(load_data()))
+# print(type(load_data()))
